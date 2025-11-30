@@ -1,0 +1,724 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{🌱 Together4Earth 🌱}</title>
+    <link rel="icon" type="image" href="img/logowebicon.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800&display=swap" rel="stylesheet">
+
+    <style>
+        *, *::before, *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f9fafb;
+            color: #1f2937;
+            line-height: 1.6;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: color 0.3s ease;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1100px;
+            margin-left: auto;
+            margin-right: auto;
+            padding-left: 1.5rem; 
+            padding-right: 1.5rem;
+        }
+
+        .site-header {
+            background-color: #ffffff;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.483);
+            position: sticky;
+            top: 0;
+            z-index: 50;
+        }
+
+        .site-header nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+           float: right;
+        }
+
+        #mobile-menu-button {
+            padding: 0.5rem;
+            border-radius: 0.375rem;
+            color: #4b5563;
+            background: none;
+            border: none;
+            cursor: pointer;
+        }
+        #mobile-menu-button:hover {
+            color: #10B981;
+            background-color: #f3f4f6;
+        }
+        #mobile-menu-button svg {
+            height: 1.5rem;
+            width: 1.5rem;
+        }
+
+        .desktop-nav {
+            display: none;
+            align-items: center;
+        }
+        .desktop-nav a {
+            font-size: 25px;
+            margin-left: 40px;
+            color: #4b5563;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+        .desktop-nav a:hover {
+            color: #295f28;
+            background-color: #dbffdf;
+            font-size: 25px;
+            height: 60px;
+            transform: translateY(-3px); 
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.621);
+        }
+        .navpage {
+            display: block;
+            padding: 12px 16px;
+            background-color: #ffffff;
+            border-radius: 10px;
+            text-align: left;
+            transition: background-color 0.3s ease;
+        }
+        .desktop-nav a.nav-button {
+            margin-bottom: 0px;
+            float: right;
+            margin-right: 0;
+            font-size: 18px;
+            background-color: #7dd5a2;
+            color: #ffffff;
+            font-weight: 800;
+            padding: 25px;
+            border-radius: 9999px;
+            box-shadow: 0 7px 6px -1px rgba(0, 0, 0, 0.118);
+            transition: background-color 0.5s ease;
+            text-align: center;
+            width: 170px;
+            height: 80px;
+        }
+        .desktop-nav a.nav-button:hover {
+           background-color: #508667; 
+            color: #ffffff;
+        }
+
+        #mobile-menu {
+            background-color: #ffffff;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+            display: none;
+        }
+        #mobile-menu.open {
+            display: block;
+        }
+        #mobile-menu a {
+            display: block;
+            padding: 0.75rem 1.5rem;
+            color: #4b5563;
+            font-weight: 500;
+        }
+        #mobile-menu a:hover {
+            background-color: #f3f4f6;
+        }
+        #mobile-menu a.nav-button {
+            display: block;
+            background-color: #34D399;
+            color: #ffffff;
+            text-align: center;
+            font-weight: 700;
+            margin: 1rem;
+            padding: 0.75rem 1.25rem;
+            border-radius: 9999px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        }
+
+        #slideshow {
+            position: relative;
+            width: 100%;
+            margin-top: 30px;
+            height: 70vh;
+            max-height: 700px;
+            overflow: hidden;
+            background-color: #111827;
+        }
+        .slide {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            transition: opacity 1s ease-in-out;
+        }
+        .slide-active {
+            opacity: 1;
+        }
+        .slide-hidden {
+            opacity: 0;
+        }
+        .slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .slide-overlay {
+            position: absolute;
+            inset: 0;
+            background-color: rgba(0, 0, 0, 0.4);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 1rem;
+        }
+        .slide-overlay h1 {
+            font-size: 2.25rem;
+            font-weight: 800;
+            color: #ffffff;
+            margin-bottom: 1rem;
+        }
+        .slide-overlay p {
+            font-size: 1.125rem;
+            color: #ffffff;
+            max-width: 42rem;
+        }
+
+        .imgtopdiv {
+            align-items: center;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap; 
+        }
+
+        .imgtop {
+            height: 230px;
+            width: 330px;
+            margin-bottom: 50px;
+            margin-left: 20px;
+            margin-top: 50px;
+            flex-direction: column;
+            transition: all 0.3s ease;
+            border-radius: 1rem;
+            object-fit: cover;
+        }
+
+        .imgtop:hover {
+            transform: scale(1.05);
+        }
+
+
+        .cards-section {
+            padding-top: 4rem;
+            padding-bottom: 4rem;
+        }
+        .section-title {
+            font-size: 20px;
+            font-weight: 800;
+            text-align: center;
+            color: #1f2937;
+            margin-bottom: 20px;
+        }
+        .cards-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2rem;
+        }
+        .card {
+            background-color: #ffffff;
+            border-radius: 0.5rem;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            transition: transform 0.3s ease;
+            margin-top: 1rem;
+        }
+        .card:hover {
+            transform: scale(1.05);
+        }
+        .card-image {
+            width: 100%;
+            height: 14rem;
+            object-fit: cover;
+        }
+        .card-content {
+            padding: 1.5rem;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        .card-content h3 {
+            font-size: 1.5rem;
+            font-weight: 800;
+            margin-bottom: 0.75rem;
+        }
+        .card-content p {
+            color: #4b5563;
+            font-size: 1rem;
+            margin-bottom: 1.5rem;
+            flex-grow: 1;
+        }
+        .card-button {
+            margin-top: auto;
+            background-color: #34D399;
+            color: #ffffff;
+            font-weight: 700;
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.5rem;
+            text-align: center;
+            transition: background-color 0.3s ease;
+            display: block;
+        }
+        .card-button:hover {
+            background-color: #059669;
+        }
+
+    
+        .lesson-section {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+            margin-bottom: 4rem;
+            margin-top: 4rem;
+            padding: 1.5rem; 
+            
+            border-radius: 0.5rem;
+        }
+        .lesson-image-container {
+            flex-basis: 45%;
+            margin: auto;
+            width: 100%;
+        }
+        .lesson-image-container img {
+            width: 100%;
+            height: auto;
+            object-fit: cover;
+            border-radius: 1rem;
+        }
+        .lesson-text-container {
+            flex-basis: 40%;
+            margin: auto;
+            width: 100%;
+        }
+        .lesson-text-container h2 {
+            font-size: 1.75rem;
+            font-weight: 700;
+            color: #10B981;
+            margin-bottom: 1rem;
+        }
+        .lesson-text-container p {
+            font-size: 1.1rem;
+            text-align: justify;
+            color: #4b5563;
+            margin: auto;
+        }
+
+        .planting-container {
+            padding-top: 3rem;
+            padding-bottom: 3rem;
+        }
+        .planting-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2rem;
+        }
+        .planting-card {
+            background-color: #ffffff;
+            border-radius: 0.5rem;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+        .planting-card img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+        }
+        .planting-card-content {
+            padding: 1.5rem;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+        }
+        .planting-card-content h2 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 0.75rem;
+        }
+        .planting-card-content p {
+            font-size: 1rem;
+            color: #4b5563;
+            margin-bottom: 1.5rem;
+            flex-grow: 1;
+        }
+        .planting-button {
+            display: inline-block;
+            text-align: center;
+            font-size: 1rem;
+            font-weight: 700;
+            color: #ffffff;
+            background-image: linear-gradient(to right, #10B981, #34D399);
+            padding: 0.75rem 1.5rem;
+            border: none;
+            border-radius: 9999px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+        .planting-button:hover {
+            color: #ffffff;
+            transform: translateY(-2px);
+            filter: brightness(1.1);
+        }
+
+
+        .section-button {
+            margin-top: 1.5rem;
+            background-color: #34D399;
+            color: #ffffff;
+            font-weight: 700;
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.5rem;
+            text-align: center;
+            transition: background-color 0.3s ease;
+            display: inline-block;
+            cursor: pointer;
+            border: none;
+        }
+        .section-button:hover {
+            background-color: #059669;
+        }
+
+
+        .site-footer {
+            background-color: #1f2937;
+            color: #ffffff;
+            padding: 3rem 0;
+            text-align: center;
+        }
+        .site-footer .container {
+            padding-left: 1.5rem;
+            padding-right: 1.5rem;
+        }
+        .footer-h1 {
+            font-weight: 500;
+            font-size: 3rem;
+            margin-bottom: 20px;
+        }
+
+
+        @media (min-width: 768px) {
+            #mobile-menu-button { display: none; }
+            #mobile-menu { display: none !important; }
+            .desktop-nav { display: flex; }
+            
+            .slide-overlay h1 { font-size: 3.75rem; }
+            .slide-overlay p { font-size: 1.25rem; }
+            .section-title { font-size: 2.25rem; }
+            
+
+            .cards-grid { grid-template-columns: repeat(3, 1fr); }
+            .planting-grid { grid-template-columns: repeat(2, 1fr); }
+            
+
+            .layout-img-left { flex-direction: row; }
+            .layout-img-right { flex-direction: row-reverse; }
+            
+
+            .section-button { margin-left: 0; } 
+        }
+
+
+        @media (max-width: 767px) {
+
+            .imgtopdiv {
+                flex-direction: column; 
+                padding: 0 1rem; 
+            }
+            .imgtop {
+                width: 100%; 
+                height: auto; 
+                max-width: 400px;
+                margin-left: 0; 
+                margin-top: 1.5rem; 
+                margin-bottom: 1.5rem;
+            }
+
+            .footer-h1 {
+                font-size: 1.8rem;
+            }
+
+            .section-button {
+                width: 100%;
+                margin-top: 20px;
+            }
+            
+            .lesson-text-container h2 {
+                margin-top: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="site-header">
+        <nav class="container">
+            <img class="logo" src="img/logowebpage.png" width="219px" height="109px">
+
+            <button id="mobile-menu-button">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
+                </svg>
+            </button>
+
+            <div class="desktop-nav">
+                <a class="navpage" href="index.html">Home</a>
+                <a class="navpage" href="lesson.html">Lessons</a>
+                <a class="navpage" href="planting.html">Planting</a>
+                <a class="navpage"href="contact.html">Contact</a>
+                <a href="getapp.html" class="nav-button">Get Our App!</a>
+            </div>
+        </nav>
+
+        <div id="mobile-menu">
+            <a href="index.html">Home</a>
+            <a href="lesson.html">Lessons</a>
+            <a href="planting.html">Planting</a>
+            <a href="contact.html">Contact</a>
+            <a href="getapp.html" class="nav-button">Get Our App!</a>
+        </div>
+    </header>
+
+    <main>
+        <section id="slideshow">
+            <div class="slide slide-active">
+                <img src="img/webbg3.png" alt="Learn Something New">
+                <div class="slide-overlay">
+                    <h1>ဘေးအန္တာရာယ်လျော့ပါးရေး</h1>
+                    <p>When Forests Disappear, Disasters Appear</p>
+                </div>
+            </div>
+            <div class="slide slide-hidden">
+                <img src="img/webbg2.png" alt="Grow Your Skills">
+                <div class="slide-overlay">
+                    <h1>Together4Earth</h1>
+                    <p>Don’t Wait for Disaster—Prepare Now</p>
+                </div>
+            </div>
+            <div class="slide slide-hidden">
+                <img src="img/webbg1.png" alt="Learn Anywhere">
+                <div class="slide-overlay">
+                    <h1>စိမ်းစိမ်းစိုစိုထိန်းစေလို</h1>
+                    <p>“Trees Hold the Earth Together — Without Them, Nature Breaks.”</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="cards-section">
+            <div class="container">
+                <h2 class="section-title">“သစ်ပင်နှင့်သစ်တောတွေကိုဘယ်လိုစောင့်ရှောက်လေ့ရှိသလဲ”</h2>
+                <h3 class="section-title" style="margin-bottom: 0px;" >“သစ်ပင်များ”</h3>
+                <div class="imgtopdiv">
+                    <img class="imgtop" src="img/webimgtop1.png" alt="tree">
+                    <img class="imgtop" src="img/webimgtop2.png" alt="tree">
+                    <img class="imgtop" src="img/webimgtop3.png" alt="tree">
+                </div>
+            </div>
+            <div class="container">
+                <h2 class="section-title">“သစ်ပင်နှင့်သစ်တောတွေ ဘယ်လိုပြုန်းတီးပျက်စီးလေ့ရှိသလဲ”</h2>
+                <div class="imgtopdiv">
+                    <img class="imgtop" src="img/webimgtop4.png" alt="tree">
+                    <img class="imgtop" src="img/webimgtop5.png" alt="tree">
+                    <img class="imgtop" src="img/webimgtop6.png" alt="tree">
+                </div>
+            </div>
+        </section><hr>
+
+        <section class="cards-section">
+            <div class="container">
+                <h2 class="section-title">“သစ်တောပြုန်းတီးခြင်းကြောင့်ဖြစ်နိုင်တဲ့ တခြားအကျိုးဆက်တွေဘာတွေလဲ”</h2>
+                <div class="cards-grid">
+                    <div class="card">
+                        <img class="card-image" src="img/imgmainflood.png" alt="Flood">
+                        <div class="card-content">
+                            <h3>ရေကြီးခြင်း</h3>
+                            <p>သစ်ပင် လျော့နည်းလျှင် မိုးရေ အလုံးအရင်း စီးဆင်းပြီး အညစ်အကြေး ပျံ့နှံ့ကာ ဂေဟစနစ် ပျက်စီး၊ ရေလျံ/ရေကြီး ဖြစ်စေပြီး ရေကူးခြင်းနှင့် ငါးမျှားခြင်းအန္တရာယ် တိုးစေသည်။</p>
+                            <a href="lesson.html" class="card-button">Learn More!</a>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <img class="card-image" src="img/imgmainsurges.png" alt="Surges">
+                        <div class="card-content">
+                            <h3>မုန်တိုင်းကြောင့်ဖြစ်လာသောရေလှိုင်းများ</h3>
+                            <p>ပင်လယ်ပြင်ဒီရေတောများကို စိုက်ထားရင် နာဂစ်လိုဆိုင်ကလုန်းမုန်တိုင်းရေလှိုင်းများကို အတားအဆီးဖြစ်စေပြီး ငါးဖမ်းလုပ်ငန်းနှင့် လူအန္တရာယ်ကို ကာကွယ်နိုင်သည်။</p>
+                            <a href="lesson.html" class="card-button">Learn More!</a>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <img class="card-image" src="img/imgmainlandslide.png" alt="Landslide">
+                        <div class="card-content">
+                            <h3>မြေပြိုခြင်း</h3>
+                            <p>သစ်ပင်အမြစ်များက မြေဆီလွှာကို ထိန်းသိမ်းပေးသဖြင့်၊ သစ်ပင်ခုတ်ခြင်းဖြင့် မြေပြိုခြင်းနှင့် လူတို့အန္တရာယ် များနိုင်သည်။</p>
+                            <a href="lesson.html" class="card-button">Learn More!</a>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <img class="card-image" src="img/imgmaindrought.png" alt="Drought">
+                        <div class="card-content">
+                            <h3>မိုးခေါင်ခြင်း</h3>
+                            <p>သစ်တောများ လျော့နည်းသွားခြင်းကြောင့် မိုးရေစုပ်ယူမှုနည်းပြီး ရေငွေ့ပျံမှုကျဆင်းကာ မိုးခေါင်ခြင်း၊ အပူချိန်မြင့်ခြင်းနှင့် တောမီးလောင်နိုင်မှုများလာစေသည်။</p>
+                            <a href="lesson.html" class="card-button">Learn More!</a>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <img class="card-image" src="img/imgmaineco.png" alt="Eco">
+                        <div class="card-content">
+                            <h3>အစာကွင်းဆက်ထိခိုက်ခြင်း</h3>
+                            <p>သစ်တောများကို ခုတ်လျှင် အပင်နှင့် တိရစ္ဆာန်များလိုအပ်သော မြေဆီလွှာ၊ စိုထိုင်းမှုပတ်ဝန်းကျင်က ပျက်စီးခြင်းကြောင့် အပင်ငယ်များ မပေါက်နိုင်ဘဲ တိရစ္ဆာန်များလည်း နေရာဆုံးရှုံးပြီး ပြန်လည်မရှိနိုင်တော့ပါ။</p>
+                            <a href="lesson.html" class="card-button">Learn More!</a>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <img class="card-image" src="img/imgmainglobalwarming.png" alt="Global Warming">
+                        <div class="card-content">
+                            <h3>ကမ္ဘာကြီးပူနွေးခြင်း</h3>
+                            <p>သစ်ပင်များ ခုတ်ခြင်းကြောင့် ကာဗွန်ဒိုင်အောက်ဆိုဒ် မြင့်တက်၍ ကမ္ဘာပူနွေးလာပြီး ရေခဲအရည်ပျော်မှု၊ ပင်လယ်ရေအမြင့်တက်မှုနှင့် အကြမ်းဖက် မုန်တိုင်း၊ မိုးခေါင်မှုများ ပိုမိုဖြစ်စေသည်။</p>
+                            <a href="lesson.html" class="card-button">Learn More!</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main><hr>
+    
+    <main>
+        <div class="planting-container container">
+
+
+            <div class="planting-grid">
+
+                <div class="planting-card">
+
+                    <img src="img/webimagemainplant2.png" alt="A row of small green seedlings">
+                    
+                    <div class="planting-card-content">
+                        <h2>အပင်တစ်ပင်ကို ဘယ်လိုစိုက်ပျိုးရမလဲ။</h2>
+                       
+                        <p>သစ်ပင်များစိုက်ပျိုးပါ။ မစိုက်ပျိုးမီ သစ်ပင်စိုက်ပုံ၊ ဂရုတစိုက်ပြုစုပေးပုံများကို “သစ်ပင် တစ်ပင်စိုက်ပျိုးပုံ” အရလေ့လာသင်ယူပါ။ သစ်ပင်တစ်ပင်စိုက်ပျိုးပုံ နှင့် စိုက်ပျိုးရမည့်နေရာ ရွေးပါ။</p>
+
+                        <a href="planting.html" class="planting-button">Read More!</a>
+                    </div>
+                </div>
+
+
+                <div class="planting-card">
+
+                    <img src="img/webimagemainquiz.png" alt="A person tending to a garden">
+
+                    <div class="planting-card-content">
+                        <h2>ကျွမ်းကျင်မှုစမ်းသပ်ရအောင်။</h2>
+
+                        <p>Quizzes တွေ ကစားပြီး သင့်ကျွမ်းကျင်မှုကို စမ်းသပ်ချင်ရင် App ကို Download လုပ်ပြီး စိတ်ဝင်စားဖွယ် မေးခွန်းတွေနဲ့ ချက်ချင်း ပျော်ရွှင်စွာ စတင်နိုင်ပါတယ်။</p>
+                        <a href="getapp.html" class="planting-button">Get Our App!</a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </main><hr>
+
+    <div>
+            
+               <section class="lesson-section layout-img-left">
+                <div class="lesson-image-container">
+                    <img src="img/imgindexdownload.png" alt="download PDF">
+                </div>
+                <div class="lesson-text-container">
+                    <h2>စာရွက်ပေါ်တွင် လေ့ကျင့်ရန်</h2>
+                    <p>စာရွက်ပေါ်တွင် လေ့ကျင့်လိုသူတိုင်းအတွက်၊ မေးခွန်းစာရွက်တွေကို Download ယူပြီး Print ထုတ်လို့ ရအောင် ထည့်ပေးထားပါတယ်။ မေးခွန်းတွေက App ထဲမှာရှိပြီးသား ဖြစ်ပါတယ်။ ထို့အပြင် ဆရာ၊ ဆရာမတွေက ကျောင်းသားတွေကို လေ့ကျင့်ခွင့်ပေးချင်တဲ့အခါ သုံးလို့ အဆင်ပြေသလို၊ တစ်ယောက်တည်း ကိုယ့်နှုန်းနဲ့ လေ့ကျင့်ချင်တဲ့သူတွေ၊ သင်ယူချင်တဲ့သူတွေအတွက်လည်း အဆင်ပြေပါတယ်။</p>
+                    <a href="question.html" class="section-button">
+                               Download!
+                            </a>
+                
+                </div>
+            </section>
+
+
+               <section class="lesson-section layout-img-right">
+                <div class="lesson-image-container">
+                    <img src="img/aboutmeimg.jpg" alt="About Me">
+                </div>
+                <div class="lesson-text-container">
+                    <h2>About Me</h2>
+                    <p>ကျွန်မနာမည်က နန်းသက်စုဆွေထွန်းပါ၊ လူတွေက ကျွန်မကို Lily လို့ ခေါ်ကြပါတယ်။ ကျွန်မကို ၂၀၁၂ ခုနှစ် မတ်လ ၂ ရက်နေ့မှာ မွေးဖွားခဲ့ပြီး Yuri Private School မှာ ၇ တန်းတက်နေပါတယ်။ ကျွန်မရဲ့ဇာတိက ဘားအံမြို့ဖြစ်ပါတယ်။
+                        
+                    </p>
+                      <a href="contact.html" class="section-button">
+                               Contact Lily!
+                            </a>
+                      
+                
+                </div>
+            </section>
+          
+        </div><hr>
+
+    <footer class="site-footer">
+        <div class="container">
+            <h1 class="footer-h1">Together 4 Earth</h1>
+            <p>&copy; 2025 National ICT Award all right reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+       document.addEventListener('DOMContentLoaded', function () {
+
+            const menuButton = document.getElementById('mobile-menu-button');
+            const mobileMenu = document.getElementById('mobile-menu');
+
+            menuButton.addEventListener('click', function () {
+                mobileMenu.classList.toggle('open');
+            });
+
+
+            const slides = document.querySelectorAll('#slideshow .slide');
+            let currentSlide = 0;
+            const slideInterval = 5000; 
+
+            function nextSlide() {
+                slides[currentSlide].classList.remove('slide-active');
+                slides[currentSlide].classList.add('slide-hidden');
+                
+                currentSlide = (currentSlide + 1) % slides.length;
+                
+                slides[currentSlide].classList.remove('slide-hidden');
+                slides[currentSlide].classList.add('slide-active');
+            }
+
+            setInterval(nextSlide, slideInterval);
+        });
+    </script>                           
+</body>
+</html>

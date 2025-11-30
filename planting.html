@@ -1,0 +1,633 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Planting - {🌱 Together4Earth 🌱}</title>
+    
+    <link rel="icon" type="image" href="img/logowebicon.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800&display=swap" rel="stylesheet">
+
+    <style>
+
+        *, *::before, *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+ 
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f9fafb;
+            color: #1f2937;
+            line-height: 1.6;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: color 0.3s ease;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1100px;
+            margin-left: auto;
+            margin-right: auto;
+            padding-left: 1.5rem; 
+            padding-right: 1.5rem;
+        }
+
+
+        .site-header {
+            background-color: #ffffff;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.483);
+            position: sticky;
+            top: 0;
+            z-index: 50;
+        }
+
+        .site-header nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+           float: right;
+        }
+
+        #mobile-menu-button {
+            padding: 0.5rem;
+            border-radius: 0.375rem;
+            color: #4b5563;
+            background: none;
+            border: none;
+            cursor: pointer;
+        }
+        #mobile-menu-button:hover {
+            color: #10B981;
+            background-color: #f3f4f6;
+        }
+        #mobile-menu-button svg {
+            height: 1.5rem;
+            width: 1.5rem;
+        }
+
+        .desktop-nav {
+            display: none;
+            align-items: center;
+        }
+        .desktop-nav a {
+            font-size: 25px;
+            margin-left: 40px;
+            color: #4b5563;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+        .desktop-nav a:hover {
+            color: #295f28;
+            background-color: #dbffdf;
+            font-size: 25px;
+            height: 60px;
+            transform: translateY(-3px); 
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.621);
+        }
+        .navpage {
+            display: block;
+            padding: 12px 16px;
+            background-color: #ffffff;
+            border-radius: 10px;
+            text-align: left;
+            transition: background-color 0.3s ease;
+        }
+        .desktop-nav a.nav-button {
+            margin-bottom: 0px;
+            float: right;
+            margin-right: 0;
+            font-size: 18px;
+            background-color: #7dd5a2;
+            color: #ffffff;
+            font-weight: 800;
+            padding: 25px;
+            border-radius: 9999px;
+            box-shadow: 0 7px 6px -1px rgba(0,0,0,0.1);
+            transition: background-color 0.5s ease;
+            text-align: center;
+            width: 170px;
+            height: 80px;
+        }
+        .desktop-nav a.nav-button:hover {
+            background-color: #508667;
+            color: #ffffff;
+        }
+
+
+        #mobile-menu {
+            background-color: #ffffff;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+            display: none;
+        }
+        #mobile-menu.open {
+            display: block;
+        }
+        #mobile-menu a {
+            display: block;
+            padding: 0.75rem 1.5rem;
+            color: #4b5563;
+            font-weight: 500;
+        }
+        #mobile-menu a:hover {
+            background-color: #f3f4f6;
+        }
+        #mobile-menu a.nav-button {
+            display: block;
+            background-color: #34D399;
+            color: #ffffff;
+            text-align: center;
+            font-weight: 700;
+            margin: 1rem;
+            padding: 0.75rem 1.25rem;
+            border-radius: 9999px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        }
+
+        .planting-container {
+            padding-top: 3rem;
+            padding-bottom: 3rem;
+        }
+        .planting-title {
+            font-size: 2.25rem;
+            font-weight: 800;
+            text-align: center;
+            color: #1f2937;
+            margin-bottom: 3rem;
+            margin-top: 3rem;
+        }
+        .planting-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2rem;
+        }
+        .planting-card {
+            background-color: #ffffff;
+            border-radius: 0.5rem;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+        .planting-card img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+        }
+        .planting-card-content {
+            padding: 1.5rem;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+        }
+        .planting-card-content h2 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 0.75rem;
+        }
+        .planting-card-content p {
+            font-size: 1rem;
+            color: #4b5563;
+            margin-bottom: 1.5rem;
+            flex-grow: 1;
+        }
+
+
+        .lesson-section {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem; 
+            margin-bottom: 4rem;
+            margin-top: 4rem;
+            padding: 0; 
+        }
+        
+      
+        .lesson-image-container, 
+        .lesson-text-container {
+            width: 100%;
+            margin: 0;
+        }
+        
+        .lesson-image-container img {
+            width: 100%;
+            height: auto;
+            object-fit: cover;
+            border-radius: 1rem;
+        }
+
+        .lesson-text-container h2 {
+            font-size: 1.75rem;
+            font-weight: 700;
+            color: #10B981;
+            margin-bottom: 1rem;
+        }
+        .lesson-text-container p {
+            font-size: 1.1rem;
+            text-align: justify;
+            color: #4b5563;
+        }
+
+  
+        .cards-section {
+            padding-top: 4rem;
+            padding-bottom: 4rem;
+        }
+        .cards-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2rem;
+        }
+        .card {
+            background-color: #ffffff;
+            border-radius: 0.5rem;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            transition: transform 0.3s ease;
+            margin-top: 1rem;
+        }
+        .card:hover {
+            transform: scale(1.05);
+        }
+        .card-image {
+            width: 100%;
+            height: 14rem;
+            object-fit: cover;
+        }
+        .card-content {
+            padding: 1.5rem;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        .card-content p {
+            color: #000000;
+            font-size: 1.1rem; 
+            margin-bottom: 1.5rem;
+            flex-grow: 1;
+        }
+        .card-button {
+            margin-top: auto;
+            background-color: #34D399;
+            color: #ffffff;
+            font-weight: 700;
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.5rem;
+            text-align: center;
+            transition: background-color 0.3s ease;
+            display: block; 
+        }
+        .card-button:hover {
+            background-color: #059669;
+        }
+
+    
+        .section-button2 {
+            margin-top: 1rem;
+            background-color: #34D399;
+            color: #ffffff;
+            font-weight: 700;
+            padding: 1rem 1.5rem;
+            border-radius: 0.5rem;
+            text-align: center;
+            transition: background-color 0.3s ease;
+            display: inline-block;
+            margin-left: 0; 
+            margin-right: 0;
+            cursor: pointer;
+            border: none;
+            font-size: 1rem;
+            width: auto; 
+        }
+        .section-button2:hover {
+            background-color: #059669;
+        }
+        .section-button2:active {
+            background-color: #13664c;
+        }
+
+        .site-footer {
+            background-color: #1f2937;
+            color: #ffffff;
+            padding: 3rem 0;
+            text-align: center;
+        }
+        .site-footer .container {
+            padding-left: 1.5rem;
+            padding-right: 1.5rem;
+        }
+        .footer-h1 {
+            font-weight: 500;
+            font-size: 3rem;
+            margin-bottom: 20px;
+        }
+
+  
+        @media (min-width: 768px) {
+            #mobile-menu-button { display: none; }
+            #mobile-menu { display: none !important; }
+            .desktop-nav { display: flex; }
+
+
+            .planting-grid { grid-template-columns: repeat(2, 1fr); }
+            .cards-grid { grid-template-columns: repeat(3, 1fr); }
+
+
+            .layout-img-left { flex-direction: row; }
+            .layout-img-right { flex-direction: row-reverse; }
+   
+            .lesson-image-container { flex-basis: 50%; }
+            .lesson-text-container { flex-basis: 50%; padding: 0 1rem; }
+            
+            /* Buttons */
+            .section-button2 { margin-left: 0; } 
+        }
+
+
+        @media (max-width: 767px) {
+            .footer-h1 {
+                font-size: 1.8rem; 
+            }
+            .section-button2 {
+                width: 100%; 
+                margin-top: 15px;
+            }
+            .planting-title {
+                font-size: 1.8rem;
+                margin-top: 2rem;
+                margin-bottom: 2rem;
+            }
+            .lesson-text-container h2 {
+                margin-top: 15px; 
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="site-header">
+        <nav class="container">
+            <img class="logo" src="img/logowebpage.png" width="219px" height="109px">
+
+            <button id="mobile-menu-button">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
+                </svg>
+            </button>
+
+            <div class="desktop-nav">
+                <a class="navpage" href="index.html">Home</a>
+                <a class="navpage" href="lesson.html">Lessons</a>
+                <a class="navpage" href="planting.html">Planting</a>
+                <a class="navpage"href="contact.html">Contact</a>
+                <a href="getapp.html" class="nav-button">Get Our App!</a>
+            </div>
+        </nav>
+
+        <div id="mobile-menu">
+            <a href="index.html">Home</a>
+            <a href="lesson.html">Lessons</a>
+            <a href="planting.html">Planting</a>
+            <a href="contact.html">Contact</a>
+            <a href="getapp.html" class="nav-button">Get Our App!</a>
+        </div>
+    </header>
+
+    <h1 class="planting-title">Planting Lessons</h1>
+
+    <div class="container"> <section class="lesson-section layout-img-right">
+            <div class="lesson-image-container">
+                <img src="img/plantingimg1.png" alt="Right spot">
+            </div>
+            <div class="lesson-text-container">
+                <h2>Pick the Right Spot</h2>
+                <p>အရေးကြီးသော ပထမအချက်မှာ မည်သည့်နေရာတွင်စိုက်ပျိုးမည်ကို ရွေးချယ်ရန် ဖြစ်သည်။ အဘယ်ကြောင့်ဆိုသော် သစ်ပင်များသည် နေရာဒေသအခြေအနေပေါ်မူတည်၍ ကွဲပြားစွာ ရှင်သန် ပေါက်ရောက်နိုင်သောကြောင့် ဖြစ်သည်။ နေရာဒေသကိုရွေးခြင်းသည် အပင် အမျိုးအစားကိုပါ ရွေးတတ်ရန် ကူညီပေးခြင်းဖြစ်သည်။ ပိုးကျခြင်း၊ မိုးကြိုးပစ်ချခြင်းကြောင့် သေသွားသော အပင်များအစား ပြန်စိုက်ပျိုးမည်ဆိုပါက သေသွားသော အပင်အမျိုးအစားကိုသာ စိုက်ခြင်းသည် ပိုမိုသင့်လျော်သည်။</p>
+                <button class="section-button2" onclick="playAudio('record/plantingmp31.mp3')">Play Audio!</button>
+            </div>
+        </section>
+
+        <section class="lesson-section layout-img-left">
+            <div class="lesson-image-container">
+                <img src="img/plantingimg2.png" alt="Plant more trees">
+            </div>
+            <div class="lesson-text-container">
+                <h2>Why Cities Need Trees</h2>
+                <p>ရပ်ရွာဒေသနှင့် မြို့ပြကြီးများတွင် သစ်ပင်များ စဉ်ဆက်မပြတ် စိုက်ပျိုးပေးရန်လိုသည်။ မြို့ကြီးများတွင် သစ်ပင်တစ်ပင်ရှင်သန်လာရန် အခက်အခဲများရှိသည်။ အစေ့မှပေါက်လာသော အပင်လေးများသည် မြက်ရိတ်စက်တွင် ပါသွားနိုင်သည်။ လူသွားလမ်းများက အပင်ရေစုပ်ယူမှုကို အဟန့်အတားဖြစ်စေသည်။ လေသန့်စက်များက ကာဗွန်ဒိုင်အောက်ဆိုဒ်ကို လျော့ပါးစေ သောကြောင့် အပင်များအသက်ရှင်သန်မှုကို ခက်ခဲစေသည်။ ထို့ကြောင့် မြို့ပြများတွင် သစ်ပင်စိုက်ပျိုးပြုစုရန် လိုအပ်သည်။</p>
+                <button class="section-button2" onclick="playAudio('record/plantingmp32.mp3')">Play Audio!</button>
+            </div>
+        </section>
+
+        <section class="lesson-section layout-img-right">
+            <div class="lesson-image-container">
+                <img src="img/plantingimg3.png" alt="Asking permission">
+            </div>
+            <div class="lesson-text-container">
+                <h2>Ask Before You Plant</h2>
+                <p>မည်သည့်နေရာတွင် သစ်ပင်စိုက်မည်ဟု စိတ်ကူးပြီးပါက ထိုအရပ်ရှိသက်ဆိုင်ရာအကြီး အကဲများထံမှ သစ်ပင်စိုက်ခွင့်ကို တောင်းခံရမည်။ ကျောင်းတွင်စိုက်မည်ဆိုပါက ကျောင်းအုပ်ကြီး ထံမှ ခွင့်တောင်းပါ။ မိမိအိမ်တွင်စိုက်မည်ဆိုပါကလည်း မိဘများထံမှခွင့်တောင်းရမည်။ ဤသို့ ခွင့်ပြုချက်ရယူမှသာ သစ်ပင် စိုက်ပျိုးရေးတွင် အားလုံးပါဝင်ပတ်သက်၍ အပင်ကို ကာကွယ် ပေးကြမည်ဖြစ်သည်။</p>                    
+                <button class="section-button2" onclick="playAudio('record/plantingmp33.mp3')">Play Audio!</button>
+            </div>
+        </section>
+
+    </div><hr>
+
+    <div class="container">
+        <section class="lesson-section layout-img-left">
+            <div class="lesson-image-container">
+                <img src="img/plantingimg4.png" alt="plant">
+            </div>
+            <div class="lesson-text-container">
+                <h2>စိုက်ပျိုးရန်အပင်ကိုတောင်းပါ။</h2>
+                <p>ရပ်ရွာစိုက်ပျိုးရေးဌာနမှ စိုက်ပျိုးပင်စီမံချက်ရှိ မရှိ စုံစမ်းပြီးရှိပါက အပင်များ တောင်းယူ နိုင်သည်။ အထက်ပါဌာနမှကျွမ်းကျင်သူများထံ မိမိနေထိုင်ရာဒေသတွင် ရှင်သန်ကြီးထွားသည့် အပင်အမျိုးအစားများကို မေး၍အကြံဥာဏ်ရယူပါ။ သစ်ပင်များရှင်သန်ပေါက်ဖွားသောနေရာ ကွဲပြားကြသည်။ ရေ၊ မြေ၊ ရာသီဥတုနှင့် ကိုက်ညီသောနေရာတွင် အပင်များပိုမိုရှင်သန်စေသော ကြောင့်ဖြစ်သည်။</p><br>
+                <p>အပင်မရနိုင်ပါက အစေ့မှစိုက်ပျိုးနိုင်သည်။ အစေ့များကို အပင်ကြီးများပတ်ဝန်းကျင်တွင် တွေ့နိုင်သည်။ သဘာဝထိန်းသိမ်းကာကွယ်ထားသောနေရာများတွင် အပင်နှင့်အစေ့များအဝေးသို့ ယူဆောင်သွားခြင်းကို တားမြစ်ထားတတ်သောကြောင့် အစေ့များ ကောက်ယူမည်ဆိုပါက ယူခွင့် ရှိ မရှိ ကို ပထမမေးမြန်းရန်လိုသည်။</p>
+                <button class="section-button2" onclick="playAudio('record/plantingmp34.mp3')">Play Audio!</button>
+            </div>
+        </section>
+
+        <section class="lesson-section layout-img-right">
+            <div class="lesson-image-container">
+                <img src="img/plantingimg5.png" alt="plant">
+            </div>
+            <div class="lesson-text-container">
+                <h2>အပင်စိုက်ပါ။</h2>
+                <p>နည်းလမ်းတကျသစ်ပင်စိုက်သောအစီအစဉ်အရစိုက်ပါ။မိမိကိုယ်တိုင်စိုက်ပျိုးသည် ဖြစ်စေ၊ သူငယ်ချင်း သို့မဟုတ် မိသားစုက စိုက်ပျိုးသည်ဖြစ်စေ သစ်တစ်ပင် ရေရှည် တည်တံ့နိုင် စေရန် အောက်ပါအဆင့်များ အတိုင်း စီစဉ်စိုက်ပျိုးပါ။</p>                    
+                <button class="section-button2" onclick="playAudio('record/plantingmp35.mp3')">Play Audio!</button>
+            </div>
+        </section>
+    </div>
+
+    <section class="cards-section">
+        <div class="container">
+            <div class="cards-grid">
+                <div class="card">
+                    <img class="card-image" src="img/howtoplant1.png" alt="Gardening Tips">
+                    <div class="card-content">
+                        <p>1. မြေကျင်း၏ အနက်ကို လုံးထွေးနေသောအမြစ်၏အရှည်ခန့် တူးပါ။ အကျယ်သည် အမြစ် ထွေး၏နှစ်ဆ ရှိသင့်သည်။</p>
+                        <a href="https://youtu.be/2SBVz4MgeIE?si=6sU0aACaOWZo43xr" class="card-button">Watch Video!</a>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <img class="card-image" src="img/howtoplant2.png" alt="Interactive Lessons">
+                    <div class="card-content">
+                        <p>2. ကျင်း၏ပတ်လည်ရှိမြေဆီလွှာကို စစ်ဆေးပါ။ မာလွန်းနေပါက ဂေါ်ပြားဖြင့်ဆွပေးပါ။</p>
+                        <a href="https://youtu.be/8z9mQycA4Og?si=lbNcoLlQ3iOByKyp" class="card-button">Watch Video!</a>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <img class="card-image" src="img/howtoplant3.png" alt="Gardening Tips">
+                    <div class="card-content">
+                        <p>3. ပျိုးပင်စိုက်ထားသောအိုး သို့မဟုတ် ပလတ်စတစ်အိတ်ကို ဖယ်လိုက်ပါ။ အမြစ်များသည် အပင်၏ သွေးကြောများသဖွယ်ဖြစ်သောကြောင့် အလွန်ရှုပ်ထွေး၍လုံးနေပါက ရှင်းပြီး ဆန့်ပေးပါ။</p>
+                        <a href="https://youtu.be/IJnGbiewMtw?si=oOHArDlz6KkoBkoS" class="card-button">Watch Video!</a>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <img class="card-image" src="img/howtoplant4.png" alt="Gardening Tips">
+                    <div class="card-content">
+                        <p>4. ပျိုးပင်ကိုမြေကျင်းထဲထည့်လိုက်ပါ။ ပျိုးပင်ကို မူလပျိုးထားစဉ်ကရှိနေသော မြေကြီးအမြင့် ခန့်ရှိပါစေ။</p>
+                        <a href="https://youtu.be/u46A0WKp2nk?si=JkDAFjyqcIGfZZdy" class="card-button">Watch Video!</a>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <img class="card-image" src="img/howtoplant5.png" alt="Gardening Tips">
+                    <div class="card-content">
+                        <p>5. ပျိုးပင်၏ အမြစ်များကို မြေကြီးများကပ်နေစဉ် လက်ဖြင့်ဆုပ်ပေးပြီး ကျင်းထဲသို့ မြေဆီလွှာများ (မြေကြီးများ) ထည့်ပြီးနောက် လေခိုပေါက်မရှိစေရန် မြေကြီးကို ခြေဖြင့် ဆောင့်၍ နင်းပေးပါ။</p>
+                        <a href="https://youtu.be/ca99WW_v0bA?si=nMe9pFM6g_4em54R" class="card-button">Watch Video!</a>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <img class="card-image" src="img/howtoplant6.png" alt="Gardening Tips">
+                    <div class="card-content">
+                        <p>6. အပင်သစ်ကလေးကို နေရာသစ်တွင်ရှင်သန်နိုင်အောင် ရေလောင်းပေးပါ။</p>
+                        <a href="https://youtu.be/JSe_VUMymjo?si=dIQDg4gaZojA2862" class="card-button">Watch Video!</a>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <img class="card-image" src="img/howtoplant7.png" alt="Gardening Tips">
+                    <div class="card-content">
+                        <p>7. သစ်ပင်လေးကို နာမည်ပေးလိုက်ပါ။</p>
+                        <a href="https://youtu.be/CBjrdMlZlfE?si=Y32O-cf2HkGVNg63" class="card-button">Watch Video!</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section><hr>
+
+    <div class="container">
+        <section class="lesson-section layout-img-left">
+            <div class="lesson-image-container">
+                <img src="img/plantimg6.png" alt="plant">
+            </div>
+            <div class="lesson-text-container">
+                <h2>သစ်ပင်စိုက်ပြီးနောက်</h2>
+                <p>အပင်သစ်ကလေးကို ဂရုစိုက်ပြုစုပေးပါ။ ရေလောင်းပါ။ သစ်ရွက်ခြောက်၊ မြေဆွေး ပုံ ပေးပါ။ အပင်စိုက်ခါစတွင်ရေလိုသည်။ပထမတစ်နှစ်တွင် တစ်ပတ်လျှင်ရေတစ်ပုံးခန့်လောင်းပေး ရန်လိုသည်။ မိုးရွာသော အပတ်တွင်ရေလောင်းရန်မလိုပါ။ အပင်အားမြေဆွေး(သစ်ရွက်ခြောက် များ၊ သစ်သားစများ၊ကောက်ရိုးများဖြင့်) ၂ လက်မ မှ ၄ လက်မအထိ ထူအောင်ဖုံးအုပ်ပေးပါ။ ထိုသို့ဖုံးအုပ်ပေးထားခြင်းဖြင့် ပေါင်းပင်များကို လျော့ပါးသွားစေသည်။ သစ်မြစ်များ အစိုဓာတ်ကောင်းစွာရရန် ထိန်းသိမ်းပေးခြင်းဖြင့် သစ်ပင်အတွက်အစာရေစာ ရစေနိုင်သည်။ ထိုသစ်ရွက်ဆွေးများကို ပင်စည်နှင့် ထိကပ်မနေစေဘဲ ပင်စည်အောက်ခြေနှင့် အနည်းငယ်ခွာ ထားပါ။</p>
+                <button class="section-button2" onclick="playAudio('record/plantingmp36.mp3')">Play Audio!</button>
+            </div>
+        </section>
+
+        <section class="lesson-section layout-img-right">
+            <div class="lesson-image-container">
+                <img src="img/plantimg8.png" alt="plant">
+            </div>
+            <div class="lesson-text-container">
+                <h2>ဝါးပင်</h2>
+                <p>ဝါးပင်သည် မြန်မာနိုင်ငံနေရာအနှံ့တွင် ပေါက်ရောက်သော်လည်း ပြန်လည်စိုက်ပျိုးခြင်း မရှိသောကြောင့် ယခုအခါ ဝါးပင်ရှားပါးမှုအန္တရာယ်ရှိနေသည်။ ဝါးပင်နှင့် သစ်ပင်များသည် ကာဗွန်ဒိုင်အောက်ဆိုဒ်ဓာတ်ကို သိုလှောင်ကြသည်။ ကာဗွန်ဒိုင်အောက်ဆိုဒ်ဓာတ်သည် ကမ္ဘာကြီးကိုပူနွေးလာစေသောဓာတ်ဖြစ်သည်။ သစ်ပင်ဝါးပင်များ၏အမြစ်များ၊ အကိုင်းများ ကြီးထွားလာသည်နှင့်အမျှ ကာဗွန်ဒိုင်အောက်ဆိုဒ် သိုလှောင်မှု ပိုလာသည်။ ဝါးပင်သည် ၎င်းနှင့် ရွယ်တူသစ်ပင်များထက် ကာဗွန်ဒိုင်အောက်ဆိုဒ်သိုလှောင်မှုပိုများ၍ အောက်ဆီဂျင် ထုတ်ပေးမှု ၃၅ ရာခိုင်နှုန်းပိုများသည်။ </p>                    
+                <button class="section-button2" onclick="playAudio('record/plantingmp37.mp3')">Play Audio!</button>
+            </div>
+        </section>
+
+        <section class="lesson-section layout-img-left">
+            <div class="lesson-image-container">
+                <img src="img/plantimg7.png" alt="plant">
+            </div>
+            <div class="lesson-text-container">
+                <h2>ဝါးပင်</h2>
+                <p>ဝါးပင်ကို မြေဩဇာနှင့်ပိုးသတ်ဆေးထည့်ပေးရန် မလိုပါ။ ဝါးပင်သည် မြေဆီလွှာကိုထိန်းထားပေးသည့်အပြင် သစ်အစားဝါးကိုသုံးခြင်းဖြင့် သစ်တောပြုန်းတီးမှုကို လျော့ပါးစေသည်။ ဝါးကို ပရိဘောဂ၊ အိမ်သုံးပစ္စည်း၊ လက်မှုပစ္စည်း၊ ဝါးခြင်းတောင်း၊ ဖျာ၊ ရေယွန်(ကာဗွန်စက္ကူ)၊ စက္ကူ၊ အစားအစာ(မျှစ်)နှင့် လောင်စာများအဖြစ် အမျိုးမျိုး အသုံးပြု နိုင်သောကြောင့် အရေးအကြီးဆုံးစက်မှု ကုန်ကြမ်းတစ်ခုလည်းဖြစ်သည်။</p>
+                <button class="section-button2" onclick="playAudio('record/plantingmp38.mp3')">Play Audio!</button>
+            </div>
+        </section>
+    </div>
+
+    <main>
+        <div class="planting-container container">
+            <div class="planting-grid">
+                
+                <div class="planting-card">
+                    <img src="img/plantingimgend1.png" alt="A row of small green seedlings">
+                    <div class="planting-card-content">
+                        <h2>Environmental Study</h2>
+                        <p>“ပတ်ဝန်းကျင်ထိန်းသိမ်းစောင့်ရှောက်ရေး လေ့လာမှုမှတ်တမ်း” ကို မှတ်စုစာအုပ်တွင် ကူးရေးထားပါ။ သစ်ပင်များအားစောင့်ရှောက်ရန် မိမိတို့ဆောင်ရွက်နေသောလုပ်ငန်းများကို လေ့လာမှတ်သားပြီး မည်သည့်လုပ်ငန်းများကို ထပ်မံပြုလုပ်နိုင်ကြောင်း စဉ်းစားပါ။</p>
+                        <button class="section-button2" style="margin-left: 0;" onclick="playAudio('record/cardmp31.mp3')">Play Audio!</button>
+                    </div>
+                </div>
+
+                <div class="planting-card">
+                    <img src="img/plantingimgend2.png" alt="A person tending to a garden">
+                    <div class="planting-card-content">
+                        <h2>Tree Conservation Campaign</h2>
+                        <p>“သစ်ပင်နှင့်သစ်တောများကို မည်သို့ကာကွယ်ထိန်းသိမ်းနိုင်ပုံ” နှင့် ပတ်သက်၍ ပိုစတာကားချပ်များ ရေးသားပြီး သစ်ပင်များကာကွယ်ထိန်းသိမ်းစောင့်ရှောက်ရန် လှုံ့ဆော်ရေး အတွက် စာသင်ခန်း၊ ကျောင်းနှင့် ရပ်ရွာအတွင်းပြသထားသည်။</p>
+                        <button class="section-button2" style="margin-left: 0;" onclick="playAudio('record/cardmp32.mp3')">Play Audio!</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container">
+            <h1 class="footer-h1">Together 4 Earth</h1>
+            <p>&copy; 2025 National ICT Award all right reserved.</p>
+        </div>
+    </footer>
+
+    <audio id="audio-player"></audio>
+
+    <script>
+ 
+        function playAudio(file) {
+            const audio = document.getElementById('audio-player');
+            if (audio.src.includes(file)) {
+                if (audio.paused) audio.play();
+                else audio.pause();
+            } else {
+                audio.src = file;
+                audio.play();
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', function () {
+          
+            const menuButton = document.getElementById('mobile-menu-button');
+            const mobileMenu = document.getElementById('mobile-menu');
+
+            menuButton.addEventListener('click', function () {
+                mobileMenu.classList.toggle('open');
+            });
+        });
+    </script>
+
+</body>
+</html>

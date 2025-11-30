@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lesson - {🌱 Together4Earth 🌱}</title>
+    
+    <link rel="icon" type="image" href="img/logowebicon.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800&display=swap" rel="stylesheet">
+
+    <style>
+
+        *, *::before, *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f9fafb;
+            color: #1f2937;
+            line-height: 1.6;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: color 0.3s ease;
+        }
+
+
+        .container {
+            width: 100%;
+            max-width: 1100px;
+            margin-left: auto;
+            margin-right: auto;
+            padding-left: 1.5rem; 
+            padding-right: 1.5rem;
+        }
+
+
+        .site-header {
+            background-color: #ffffff;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.483), 0 2px 4px -1px rgba(0, 0, 0, 0.272);
+            position: sticky;
+            top: 0;
+            z-index: 50;
+        }
+
+        .site-header nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+           float: right;
+        }
+
+
+        #mobile-menu-button {
+            padding: 0.5rem;
+            border-radius: 0.375rem;
+            color: #4b5563;
+            background: none;
+            border: none;
+            cursor: pointer;
+        }
+        #mobile-menu-button:hover {
+            color: #10B981;
+            background-color: #f3f4f6;
+        }
+        #mobile-menu-button svg {
+            height: 1.5rem;
+            width: 1.5rem;
+        }
+
+
+        .desktop-nav {
+            display: none;
+            align-items: center;
+        }
+        .desktop-nav a {
+            font-size: 25px;
+            margin-left: 40px;
+            color: #4b5563;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+        .desktop-nav a:hover {
+            color: #295f28;
+            background-color: #dbffdf;
+            font-size: 25px;
+            height: 60px;
+            transform: translateY(-3px); 
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.621);
+        }
+        .navpage {
+            display: block;
+            padding: 12px 16px;
+            background-color: #ffffff;
+            border-radius: 10px;
+            text-align: left;
+            transition: background-color 0.3s ease;
+        }
+        .desktop-nav a.nav-button {
+            margin-bottom: 0px;
+            float: right;
+            margin-right: 0;
+            font-size: 18px;
+            background-color: #7dd5a2;
+            color: #ffffff;
+            font-weight: 800;
+            padding: 25px;
+            border-radius: 9999px;
+            box-shadow: 0 7px 6px -1px rgba(0, 0, 0, 0.118);
+            transition: background-color 0.5s ease;
+            text-align: center;
+            width: 170px;
+            height: 80px;
+        }
+        .desktop-nav a.nav-button:hover {
+            background-color: #508667;
+            color: #ffffff;
+        }
+
+        /* Mobile Menu */
+        #mobile-menu {
+            background-color: #ffffff;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+            display: none;
+        }
+        #mobile-menu.open {
+            display: block;
+        }
+        #mobile-menu a {
+            display: block;
+            padding: 0.75rem 1.5rem;
+            color: #4b5563;
+            font-weight: 500;
+        }
+        #mobile-menu a:hover {
+            background-color: #f3f4f6;
+        }
+        #mobile-menu a.nav-button {
+            display: block;
+            background-color: #34D399;
+            color: #ffffff;
+            text-align: center;
+            font-weight: 700;
+            margin: 1rem;
+            padding: 0.75rem 1.25rem;
+            border-radius: 9999px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        }
+
+
+        .lesson-container {
+            max-width: 950px;
+            margin: 3rem auto;
+            padding: 0 1.5rem; 
+        }
+        .lesson-title {
+            font-size: 2.4rem;
+            font-weight: 800;
+            color: #1f2937;
+            margin-bottom: 2rem;
+            text-align: center;
+            border-bottom: 3px solid #34D399;
+            padding-bottom: 0.5rem;
+        }
+        .lesson-section {
+            display: flex;
+            flex-direction: column; 
+            gap: 3rem;
+            margin-bottom: 4rem;
+            margin-top: 4rem;
+            background-color: #ffffff;
+            padding: 1.5rem;
+            border-radius: 0.5rem;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        }
+        .lesson-image-container {
+            flex-basis: 45%;
+            margin: auto;
+            width: 100%; 
+        }
+        .lesson-image-container img {
+            width: 100%;
+            height: auto;
+            object-fit: cover;
+            border-radius: 1rem;
+        }
+        .lesson-text-container {
+            flex-basis: 55%;
+            width: 100%;
+        }
+        .lesson-text-container h2 {
+            font-size: 1.75rem;
+            font-weight: 700;
+            color: #10B981;
+            margin-bottom: 1rem;
+        }
+        .lesson-text-container p {
+            font-size: 1.1rem;
+            text-align: justify;
+            color: #4b5563;
+            margin-bottom: 1rem;
+        }
+
+
+        .summary-section {
+            background-color: #e0f2f1;
+            border-left: 5px solid #10B981;
+            padding: 2rem;
+            border-radius: 1.5rem;
+        }
+        .summary-section h3 {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #065f46;
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+        .summary-section p {
+            font-size: 1rem;
+            margin-top: 1.2rem;
+            color: #064e3b;
+        }
+
+
+        .section-button, .section-button2 {
+            margin-top: 1rem;
+            background-color: #34D399;
+            color: #ffffff;
+            font-weight: 700;
+            border-radius: 0.5rem;
+            text-align: center;
+            transition: background-color 0.3s ease;
+            display: inline-block;
+            cursor: pointer;
+            border: none;
+        }
+        .section-button {
+            padding: 0.75rem 1.5rem;
+        }
+        .section-button2 {
+            padding: 1rem 1.5rem;
+            font-size: 1rem;
+        }
+        .section-button:hover, .section-button2:hover {
+            background-color: #059669;
+        }
+        .section-button:active {
+            background-color: #13664c;
+        }
+
+
+        .site-footer {
+            background-color: #1f2937;
+            color: #ffffff;
+            padding: 3rem 0;
+            text-align: center;
+        }
+        .site-footer .container {
+            padding-left: 1.5rem;
+            padding-right: 1.5rem;
+        }
+        .footer-h1 {
+            font-weight: 500;
+            font-size: 3rem;
+            margin-bottom: 20px;
+        }
+
+
+        @media (min-width: 768px) {
+            #mobile-menu-button { display: none; }
+            #mobile-menu { display: none !important; }
+            .desktop-nav { display: flex; }
+            
+            .layout-img-left { flex-direction: row; }
+            .layout-img-right { flex-direction: row-reverse; }
+            
+
+            .section-button, .section-button2 { margin-left: 2rem; }
+        }
+
+        @media (max-width: 767px) {
+            .footer-h1 {
+                font-size: 1.8rem;
+            }
+            .lesson-title {
+                font-size: 1.8rem;
+            }
+            .section-button, .section-button2 {
+                width: 100%;
+                margin-left: 0;
+                margin-top: 15px;
+            }
+            .lesson-text-container h2 {
+                margin-top: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="site-header">
+        <nav class="container">
+            <img class="logo" src="img/logowebpage.png" width="219px" height="109px">
+
+            <button id="mobile-menu-button">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
+                </svg>
+            </button>
+
+            <div class="desktop-nav">
+                <a class="navpage" href="index.html">Home</a>
+                <a class="navpage" href="lesson.html">Lessons</a>
+                <a class="navpage" href="planting.html">Planting</a>
+                <a class="navpage"href="contact.html">Contact</a>
+                <a href="getapp.html" class="nav-button">Get Our App!</a>
+            </div>
+        </nav>
+
+        <div id="mobile-menu">
+            <a href="index.html">Home</a>
+            <a href="lesson.html">Lessons</a>
+            <a href="planting.html">Planting</a>
+            <a href="contact.html">Contact</a>
+            <a href="getapp.html" class="nav-button">Get Our App!</a>
+        </div>
+    </header>
+
+
+    <main>
+        <div class="lesson-container">
+            <h1 class="lesson-title">“သစ်တောပြုန်းတီးခြင်းကြောင့်ဖြစ်နိုင်တဲ့ တခြားအကျိုးဆက်တွေဘာတွေလဲ”</h1>
+
+
+            <section class="lesson-section layout-img-left">
+                <div class="lesson-image-container">
+                    <img src="img/flood1.png" alt="Flood">
+                </div>
+                <div class="lesson-text-container">
+                    <h2>ရေကြီးခြင်း</h2>
+                    <p>မိုးရေကိုအပင်တွေကစုပ်ယူကြတဲ့အတွက် ရွာကျ
+                        တဲ့မိုးရေဟာမြစ်တွေဆီကိုဖြည်းဖြည်းပဲ စီးသွားတယ်။ သစ်ပင်တွေမရှိတော့တဲ့အခါမှာ မြေကြီးက မိုးရေကိုစုပ်ယူမှု အားနည်းသွားတာကြောင့် ရွာကျတဲ့မိုးရေတွေဟာ အလုံးအရင်းနဲ့လိမ့်ပြီး စီးဆင်းလာတဲ့အတွက်‌ မြေပြင်မှာ‌အမှိုက်တွေနဲ့ အညစ်အကြေးတွေကို ပျံ့နှံစေတယ်။ မြေအောက်ရေနည်းသွားတာရယ်၊ မြေပြင်ပေါ်ကရေတွေအလုံးအရင်းနဲ့ စီးဆင်းသွားတာရယ်ဟာ ဂေဟစနစ်ကို ပျက်စီးစေတယ်။ ဒါကြောင့်မြစ်ရေ၊ ကန်ရေတွေမှာ ရေလျံ/ရေကြီးနိုင်ပြီး ရေကူးတာ၊ ငါးမျှားတာ တွေက အန္တရာယ်ရှိလာနိုင်တယ်။</p>
+                       <button class="section-button2" onclick="playAudio('record/flood.mp3')">Play Audio!</button>
+                       <a href="https://youtu.be/9hQZCiZ21fk?si=GpmlqgP5RmYlu3Ur" class="section-button">Watch Video!</a>
+                </div>
+            </section>
+
+        
+            <section class="lesson-section layout-img-right">
+                <div class="lesson-image-container">
+                    <img src="img/stormsurges1.png" alt="Storm Surges">
+                </div>
+                <div class="lesson-text-container">
+                    <h2>မုန်တိုင်းကြောင့်ဖြစ်လာသောရေလှိုင်းများ</h2>
+                    <p>ပင်လယ်ပြင်မှာ နာဂစ်လိုဆိုင်ကလုန်းမုန်တိုင်းဖြစ်ရင် အလွန်ကြီးမားပြင်းထန်တဲ့လှိုင်းတွေ ဖြစ်စေတယ်။ ဆူနာမီရေလှိုင်းမဟုတ်ပေမဲ့ ကုန်းတွင်းပိုင်းအတော်ဝေးဝေးအထိ ရောက်လာနိုင်တဲ့ လှိုင်းဖြစ်စေတယ်။ ပင်လယ်ကမ်းရိုးတန်းကဒီရေတောတွေ၊လမုပင်တွေကိုခုတ်လိုက်မယ်ဆိုရင်ပင်လယ်ရေလှိုင်းတွေက အတားအဆီးမရှိ ဝင်လာပြီး အဲဒီနေရာဒေသမှာရှိတဲ့ ငါးဖမ်းလုပ်ငန်းတွေကိုဖျက်ဆီးနိုင်တယ်။ ဒီရေရောက်တော တွေကို နည်းနည်းပဲခုတ်ခဲ့မယ်ဆိုရင် ပင်လယ်ရေတွေ အတားအဆီးမရှိ ဝင်ရောက်နိုင်မှုမရှိပဲ လူအသေအပျောက်လည်း နည်းနိုင်တယ်။ ဒီရေရောက်တောတွေဟာငါး၊ပုစွန်နဲ့ခရုတွေ ပေါက်ဖွားရှင်သန်တဲ့ နေရာတွေလည်း ဖြစ်တယ်။</p>
+                    <button class="section-button2" onclick="playAudio('record/surges.mp3')">Play Audio!</button>
+                    <a href="https://youtu.be/MfsugkikLJI?si=iAOCy4yezQE5aVt6" class="section-button">Watch Video!</a>
+                </div>
+            </section>
+
+            <section class="lesson-section layout-img-left">
+                <div class="lesson-image-container">
+                    <img src="img/landslide1.png" alt="Landslide">
+                </div>
+                <div class="lesson-text-container">
+                    <h2>မြေပြိုခြင်း</h2>
+                    <p>သစ်ပင်တွေရဲ့အမြစ်တွေကဖြာထွက်ပြီး မြေကြီးကို ကုပ်ပေးထားတဲ့အတွက် မြေဆီလွှာပြုန်းတီးမှုကို ထိန်းသိမ်းကာကွယ်ပေးထားတယ်။ တောင်စောင်းမှာသစ်ပင်တွေခုတ်လိုက်ရင် မြေဆီလွှာ ကိုကုပ်တွယ်ထားတာ မရှိတော့တဲ့အတွက် မြေကြီးတွေပြိုလာပြီး ရပ်ရွှာလူထုကိုအန္တရယ်ဖြစ်စေနိုင်တယ်။</p>
+                   <button class="section-button2" onclick="playAudio('record/landslide.mp3')">Play Audio!</button>
+                   <a href="https://youtu.be/krJLnXpemtQ?si=bBJoTSLXiJTzmgIi" class="section-button">Watch Video!</a>
+                </div>
+            </section>
+
+               <section class="lesson-section layout-img-right">
+                <div class="lesson-image-container">
+                    <img src="img/drought1.png" alt="Drought">
+                </div>
+                <div class="lesson-text-container">
+                    <h2>မိုးခေါင်ခြင်း</h2>
+                    <p>သစ်တောတွေကိုခုတ်တဲ့အခါ မြေကြီးက မိုးရေစုပ်ယူမှု လျော့ကျသွားတယ်။ အဲဒီအခါမှာ မိုးရွာပုံ၊ လေတိုက်ပုံတွေပါပြောင်းလဲသွားပြီး ရာသီဥတုကပိုပြီး ခြောက်သွေ့သွားသည်။ သစ်ပင် တွေဟာ ရွာကျတဲ့ မိုးရေတွေကိုစုပ်ယူပြီး မြေကြီးထဲစိမ့်ဝင်လာတဲ့ရေတွေကို မြေအောက်ရေ အဖြစ် ထိန်းထားပေးတယ်။ အပင်တွေဟာ အမြစ်ကနေ ရေတွေကိုစုပ်ယူပြီး ပတ်ဝန်းကျင်လေထုထဲကို ရေငွေ့အဖြစ်ပြန်ထုတ်ပေးတယ်။ အဲဒီရေငွေ့တွေဟာ တိမ်ဖြစ်သွားတဲ့အတွက် တိမ်တွေကနေ မိုးရွာသွန်းမှုဖြစ်စေတယ်။ နေပူရှိန်ကိုကာကွယ်ပေးပြီး အပူချိန်လျော့ကျစေတယ်။ သစ်ပင်တွေ နည်းသွားတဲ့အတွက် ရေငွေ့ပျံမှုနည်းပြီး မိုးခေါင်ခြင်းတွေ ဖြစ်လာတယ်။ အပူချိန်တွေ တက် လာမယ်ဆိုရင် တောမီးလောင်ဖို့ အခွင့်အလမ်းတွေပိုများမယ်။</p>
+                    <button class="section-button2" onclick="playAudio('record/drought.mp3')">Play Audio!</button>
+                    <a href="https://youtu.be/O5a6yHSI0L0?si=PggtrDYr4j2xdynw" class="section-button">Watch Video!</a>
+                </div>
+            </section>
+
+             <section class="lesson-section layout-img-left">
+                <div class="lesson-image-container">
+                    <img src="img/ecodamage1.png" alt="Food chain damage">
+                </div>
+                <div class="lesson-text-container">
+                    <h2>အစာကွင်းဆက်ထိခိုက်ခြင်း</h2>
+                    <p>တချို့အပင်တွေနဲ့ တိရစ္ဆာန်တွေဟာ သစ်တောတွေရှိလို့ဖြစ်လာတဲ့ မြေဆီလွှာ၊ လေထု စိုထိုင်းမှုနဲ့ အစားအစာတွေရှိမှသာ အသက်ရှင်နိုင်ကြတယ်။ အဲဒီသစ်ပင်တွေကို ခုတ်လိုက်တဲ့ အခါ အပင်နဲ့တိရစ္ဆာန် တွေလိုအပ်တဲ့ ပတ်ဝန်းကျင်ပျက်စီးသွားတယ်။ အပင်ကြီးတွေကတော့ ပြန်လည်ရှင်သန်လာနိုင်ပေမဲ့ အပင်ငယ်လေးတွေက သူတို့ ကြိုက်တဲ့ပတ်ဝန်းကျင်အနေအထား ပျက်စီးသွားတာကြောင့် ပြန်မပေါက် နိုင်တော့ဘူး။ တချို့တိရစ္ဆာန်အတော်များများကလည်း သူတို့နေတဲ့နေရာတွေ ပျက်စီးသွားတဲ့အတွက် ပြန်မလာနိုင်တော့ဘူး။</p>
+                  <button class="section-button2" onclick="playAudio('record/foodchaindamage.mp3')">Play Audio!</button>
+                  <a href="https://youtu.be/6x8IuJlcXTk?si=NqeAr6UIoXTmnBL6" class="section-button">Watch Video!</a>
+                </div>
+            </section>
+
+            <section class="lesson-section layout-img-right">
+                <div class="lesson-image-container">
+                    <img src="img/globalwarming1.png" alt="Global warming">
+                </div>
+                <div class="lesson-text-container">
+                    <h2>ကမ္ဘာကြီးပူနွေးခြင်း</h2>
+                    <p>သစ်ပင်များ ပုံမှန်အားဖြင့် ဤဓာတ်ငွေ့ကို စုပ်ယူသောကြောင့် သစ်ပင်များ ခုတ်လှဲခြင်းသည် လေထုထဲသို့ ကာဗွန်ဒိုင်အောက်ဆိုဒ် ပိုမိုများပြားစေသည်။ သစ်ပင်များ နည်းပါးလာသောအခါ လေထုထဲတွင် အပူပိုမိုပိတ်မိနေပြီး ကမ္ဘာကြီးပူနွေးလာမှုကို ဖြစ်စေသည်။ ၎င်းသည် ကမ္ဘာမြေကို ပိုမိုပူနွေးစေပြီး ရေခဲများ အရည်ပျော်ကာ ပင်လယ်ရေမျက်နှာပြင် မြင့်တက်လာကာ လူ၊ တိရစ္ဆာန်များနှင့် ပတ်ဝန်းကျင်ကို ထိခိုက်စေသည့် ပိုမိုပြင်းထန်သော မုန်တိုင်းများနှင့် မိုးခေါင်မှုများကို ဖြစ်ပေါ်စေပါသည်။</p>
+                    <button class="section-button2" onclick="playAudio('record/globalwarming.mp3')">Play Audio!</button>
+                   <a href="https://youtu.be/Y3gqoDUtmt4?si=CCiGtE0LxCNfiMwS" class="section-button">Watch Video!</a>
+                </div>
+            </section>
+            
+            
+            <section class="summary-section">
+                <h3>အဓိကအချက်များ</h3>
+                <p>•	သစ်တောများကိုအလွန်အကျွံ မခုတ်ဖြတ်ဘဲ ထိန်းသိမ်းစောင့်ရှောက်ပါက သစ်တောများ သည် သဘာဝသယံဇာတများအဖြစ် အမြဲတည်ရှိနေမည်။</p>
+                <p>•	အပင်အမျိုးအစားနှင့် သဘာဝပတ်ဝန်းကျင်ကိုလိုက်၍ သစ်တောများ အသစ်တစ်ဖန် ပြန်လည်ဖွံ့ဖြိုးလာရန် အနှစ် ၃၀ မှ ၂၀၀ အထိကြာမည်။</p>
+                <p>•	သစ်တောများသည် လေ၊ အပူချိန်၊ စိုထိုင်းမှု၊ မိုးရွာခြင်း၊ လေထုအတွင်းရှိရေငွေ့ကို ထိန်းချုပ်ပေးနိုင်ခြင်းဖြင့် ရာသီဥတုကိုထိန်းချုပ်နိုင်သည်။</p>
+                <p>•	သစ်တောများသည် အောက်ဆီဂျင်၊ ကာဗွန်ဒိုင်အောက်ဆိုဒ်နှင့် နိုက်ထရိုဂျင်ဓာတ်များကို အလဲအလှယ် ထုတ်လုပ်ပေးနိုင်သည်။</p>
+                <p>•	သစ်တောများသည် တိရစ္ဆာန်များအတွက် အရိပ်အာဝါသပေးသည့်အပြင် ကာဗွန်ဒိုင် အောက်ဆိုဒ်ကိုစုပ်ယူခြင်းဖြင့် လေထုညစ်ညမ်းမှုကိုလျော့ပါးစေသည်။</p>
+                <p>•	သစ်ပင်များကို အချိန်မှန်မှန်ပြုစုစောင့်ရှောက်မှသာလျှင် သစ်ပင်များ ကောင်းမွန်စွာ ရှင်သန်နိုင်သည်။</p>
+                <p>•	သစ်ပင်များကြောင့် မြေဆီလွှာကို ထိန်းသိမ်းထားနိုင်ပြီး ရေစီးရေလာ ကောင်းမွန်စေသည်။</p>
+                <p>•	သစ်ပင်များသည် သဘာဝဘေးအန္တရာယ်များမှ ကာကွယ်ပေးနိုင်ပြီး၊ ပတ်ဝန်းကျင်ကို လေကောင်းလေသန့်ရရှိစေသည်။</p>
+                <p>•	သစ်ပင်များသည် သက်ရှိသတ္တဝါများဖြစ်ကြသည်။</p>
+                <p>•	သစ်ပင်များသည် သဘာဝပတ်ဝန်းကျင်ကို ထိန်းသိမ်းပေးနိုင်သည်။</p>
+                <p>•	သစ်ပင်များစိုက်ပျိုးခြင်းကို မိုးရာသီအစတွင် စတင်ဆောင်ရွက်ရသည်။</p>
+                <p>•	သစ်ပင်များ စိုက်ပျိုးခြင်းလုပ်ငန်းကို ဒေသအလိုက်၊ ရာသီအလိုက် ဆောင်ရွက်ကြသည်။</p>
+                <p>•	သစ်ပင်ငယ်များကို စိုက်ပျိုးပြီးနောက် ရေမှန်မှန်လောင်းပေးရသည်။</p>
+                <p>•	သစ်ပင်များသည် အပင်မျိုးရင်းများစွာကို ပိုင်ဆိုင်ထားပြီး ကောင်းမွန်သော မျိုးစေ့များ ဖြစ်ထွန်းစေသည်။</p>
+                <p>•	သစ်ပင်များသည် အစားအစာရရှိစေရန်အတွက် အရေးကြီးသော အခန်းကဏ္ဍမှ ပါဝင်သည်။</p>
+            </section>
+
+        </div>
+    </main>
+
+   <footer class="site-footer">
+        <div class="container">
+            <h1 class="footer-h1">Together 4 Earth</h1>
+            <p>&copy; 2025 National ICT Award all right reserved.</p>
+        </div>
+    </footer>
+
+    <audio id="audio-player"></audio>
+
+    <script>
+      
+        function playAudio(file) {
+            const audio = document.getElementById('audio-player');
+            if (audio.src.includes(file)) {
+                if (audio.paused) audio.play();
+                else audio.pause();
+            } else {
+                audio.src = file;
+                audio.play();
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', function () {
+          
+            const menuButton = document.getElementById('mobile-menu-button');
+            const mobileMenu = document.getElementById('mobile-menu');
+
+            menuButton.addEventListener('click', function () {
+            
+                mobileMenu.classList.toggle('open');
+            });
+        });
+    </script>
+
+</body>
+</html>
